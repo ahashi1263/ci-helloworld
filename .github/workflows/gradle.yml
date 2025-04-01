@@ -40,6 +40,13 @@ jobs:
           generate-summary: true
           fail-on-branches-decrease: true
           fail-on-coverage-decrease: true
+      - name: Commit summary report
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add *.json
+          git commit -m "Updating generated summary report!"
+          git push
 
   build_and_publish_docker_image:
     name: Publish to Docker Hub
